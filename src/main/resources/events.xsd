@@ -1,0 +1,31 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="https://github.com/no0ker/MyExampleVer2Application"
+           xmlns:tns="https://github.com/no0ker/MyExampleVer2Application"
+           elementFormDefault="qualified">
+
+    <xs:element name="setEventRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="setEventResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
+                <xs:element name="error" type="xs:string" minOccurs="0"/>
+                <xs:element name="status" type="tns:status"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:simpleType name="status">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="succesfull"/>
+            <xs:enumeration value="fail"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>
