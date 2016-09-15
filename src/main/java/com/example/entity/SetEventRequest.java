@@ -1,6 +1,8 @@
 
 package com.example.entity;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -19,6 +21,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="things" type="{https://github.com/no0ker/MyExampleVer2Application}thing" maxOccurs="10" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -29,13 +32,16 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "name"
+    "name",
+    "things"
 })
 @XmlRootElement(name = "setEventRequest", namespace = "https://github.com/no0ker/MyExampleVer2Application")
 public class SetEventRequest {
 
     @XmlElement(namespace = "https://github.com/no0ker/MyExampleVer2Application", required = true)
     protected String name;
+    @XmlElement(namespace = "https://github.com/no0ker/MyExampleVer2Application")
+    protected List<Thing> things;
 
     /**
      * Gets the value of the name property.
@@ -59,6 +65,35 @@ public class SetEventRequest {
      */
     public void setName(String value) {
         this.name = value;
+    }
+
+    /**
+     * Gets the value of the things property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the things property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getThings().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link Thing }
+     * 
+     * 
+     */
+    public List<Thing> getThings() {
+        if (things == null) {
+            things = new ArrayList<Thing>();
+        }
+        return this.things;
     }
 
 }

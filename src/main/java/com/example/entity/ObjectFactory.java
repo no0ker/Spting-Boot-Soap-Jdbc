@@ -38,11 +38,27 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Thing }
+     * 
+     */
+    public Thing createThing() {
+        return new Thing();
+    }
+
+    /**
      * Create an instance of {@link SetEventResponse }
      * 
      */
     public SetEventResponse createSetEventResponse() {
         return new SetEventResponse();
+    }
+
+    /**
+     * Create an instance of {@link StatusContainer }
+     * 
+     */
+    public StatusContainer createStatusContainer() {
+        return new StatusContainer();
     }
 
 }
