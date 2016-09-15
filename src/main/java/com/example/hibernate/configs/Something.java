@@ -18,6 +18,9 @@ public class Something
     @NotNull
     private Integer value2;
 
+    @ManyToOne
+    AnyParameter anyParameter;
+
     public Something()
     {
     }
@@ -27,10 +30,21 @@ public class Something
         this.id = id;
     }
 
-    public Something(String value1, Integer value2)
+    public Something(String value1, Integer value2, AnyParameter anyParameter)
     {
         this.value1 = value1;
         this.value2 = value2;
+        this.anyParameter = anyParameter;
+    }
+
+    public long getId()
+    {
+        return id;
+    }
+
+    public void setId(long id)
+    {
+        this.id = id;
     }
 
     public String getValue1()
@@ -48,18 +62,18 @@ public class Something
         return value2;
     }
 
-    public void setName(String value1)
+    public void setValue2(Integer value2)
     {
-        this.value1 = value1;
+        this.value2 = value2;
     }
 
-    public long getId()
+    public AnyParameter getAnyParameter()
     {
-        return id;
+        return anyParameter;
     }
 
-    public void setId(long id)
+    public void setAnyParameter(AnyParameter anyParameter)
     {
-        this.id = id;
+        this.anyParameter = anyParameter;
     }
 }
