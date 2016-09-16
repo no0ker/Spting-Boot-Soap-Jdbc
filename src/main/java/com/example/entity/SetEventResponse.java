@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="status" type="{https://github.com/no0ker/MyExampleVer2Application}statusContainer" maxOccurs="10" minOccurs="0"/>
+ *         &lt;element name="statusContainer" type="{https://github.com/no0ker/MyExampleVer2Application}statusContainer" maxOccurs="10" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -33,7 +33,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
     "name",
-    "status"
+    "statusContainer"
 })
 @XmlRootElement(name = "setEventResponse", namespace = "https://github.com/no0ker/MyExampleVer2Application")
 public class SetEventResponse {
@@ -41,7 +41,7 @@ public class SetEventResponse {
     @XmlElement(namespace = "https://github.com/no0ker/MyExampleVer2Application", required = true)
     protected String name;
     @XmlElement(namespace = "https://github.com/no0ker/MyExampleVer2Application")
-    protected List<StatusContainer> status;
+    protected List<StatusContainer> statusContainer;
 
     /**
      * Gets the value of the name property.
@@ -68,18 +68,18 @@ public class SetEventResponse {
     }
 
     /**
-     * Gets the value of the status property.
+     * Gets the value of the statusContainer property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the status property.
+     * This is why there is not a <CODE>set</CODE> method for the statusContainer property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getStatus().add(newItem);
+     *    getStatusContainer().add(newItem);
      * </pre>
      * 
      * 
@@ -89,11 +89,11 @@ public class SetEventResponse {
      * 
      * 
      */
-    public List<StatusContainer> getStatus() {
-        if (status == null) {
-            status = new ArrayList<StatusContainer>();
+    public List<StatusContainer> getStatusContainer() {
+        if (statusContainer == null) {
+            statusContainer = new ArrayList<StatusContainer>();
         }
-        return this.status;
+        return this.statusContainer;
     }
 
 }
