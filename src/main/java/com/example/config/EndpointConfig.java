@@ -40,6 +40,7 @@ public class EndpointConfig
             statusContainer.setStatus(Status.FAIL);
             statusContainer.setError(e.getClass().getName());
             response.getStatusContainer().add(statusContainer);
+
             return response;
         }
 
