@@ -20,7 +20,6 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="value1" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="value2" type="{http://www.w3.org/2001/XMLSchema}integer"/>
- *         &lt;element name="anyParameter" type="{https://github.com/no0ker/MyExampleVer2Application}anyParameter" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -32,8 +31,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "thing", namespace = "https://github.com/no0ker/MyExampleVer2Application", propOrder = {
     "value1",
-    "value2",
-    "anyParameter"
+    "value2"
 })
 public class Thing {
 
@@ -41,8 +39,6 @@ public class Thing {
     protected String value1;
     @XmlElement(namespace = "https://github.com/no0ker/MyExampleVer2Application", required = true)
     protected BigInteger value2;
-    @XmlElement(namespace = "https://github.com/no0ker/MyExampleVer2Application")
-    protected AnyParameter anyParameter;
 
     /**
      * Gets the value of the value1 property.
@@ -90,30 +86,6 @@ public class Thing {
      */
     public void setValue2(BigInteger value) {
         this.value2 = value;
-    }
-
-    /**
-     * Gets the value of the anyParameter property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link AnyParameter }
-     *     
-     */
-    public AnyParameter getAnyParameter() {
-        return anyParameter;
-    }
-
-    /**
-     * Sets the value of the anyParameter property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link AnyParameter }
-     *     
-     */
-    public void setAnyParameter(AnyParameter value) {
-        this.anyParameter = value;
     }
 
 }

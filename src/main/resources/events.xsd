@@ -41,16 +41,8 @@
         <xs:sequence>
             <xs:element name="value1" type="xs:string" minOccurs="1"/>
             <xs:element name="value2" type="xs:integer" minOccurs="1"/>
-            <xs:element name="anyParameter" type="tns:anyParameter" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
 
-    <xs:simpleType name="anyParameter">
-        <xs:restriction base="xs:string">
-            <xs:enumeration value="value1"/>
-            <xs:enumeration value="value2"/>
-            <xs:enumeration value="value4"/>
-        </xs:restriction>
-    </xs:simpleType>
-
+    
 </xs:schema>
