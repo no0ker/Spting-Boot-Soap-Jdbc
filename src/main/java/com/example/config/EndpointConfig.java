@@ -39,7 +39,7 @@ public class EndpointConfig
             StatusContainer statusContainer = new StatusContainer();
             statusContainer.setStatus(Status.FAIL);
             statusContainer.setError(e.getClass().getName());
-            response.getStatus().add(statusContainer);
+            response.getStatusContainer().add(statusContainer);
             return response;
         }
 
@@ -54,14 +54,16 @@ public class EndpointConfig
 
                 StatusContainer statusContainer = new StatusContainer();
                 statusContainer.setStatus(Status.SUCCESFULL);
-                response.getStatus().add(statusContainer);
+                statusContainer.setThing(thing);
+                response.getStatusContainer().add(statusContainer);
             }
             catch (DataAccessException e)
             {
                 StatusContainer statusContainer = new StatusContainer();
                 statusContainer.setStatus(Status.FAIL);
+                statusContainer.setThing(thing);
                 statusContainer.setError(e.getClass().getName());
-                response.getStatus().add(statusContainer);
+                response.getStatusContainer().add(statusContainer);
             }
         }
         return response;

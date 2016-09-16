@@ -42,5 +42,5 @@
             <xs:element name="value2" type="xs:integer" minOccurs="1"/>
         </xs:sequence>
     </xs:complexType>
-    
+
 </xs:schema>
