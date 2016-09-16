@@ -6,7 +6,8 @@ import javax.validation.constraints.NotNull;
 import java.math.BigInteger;
 
 @Entity
-@Table(name = "somethings")
+@Table(name = "somethings",
+       uniqueConstraints = @UniqueConstraint(columnNames = {"value1", "value2"}))
 public class Something
 {
     @Id
