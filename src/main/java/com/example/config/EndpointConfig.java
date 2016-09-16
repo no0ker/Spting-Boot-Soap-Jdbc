@@ -1,8 +1,7 @@
 package com.example.config;
 
-import com.example.entity.SetEventRequest;
-import com.example.entity.SetEventResponse;
-import com.example.entity.Status;
+import com.example.entity.*;
+import com.example.hibernate.configs.Something;
 import com.example.hibernate.configs.SomethingDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -33,16 +32,32 @@ public class EndpointConfig
         SetEventResponse response = new SetEventResponse();
         response.setName(request.getName());
 
-        try
-        {
-            dbHelper.saveEvent(request.getName());
-            response.setStatus(Status.SUCCESFULL);
+        for(Thing thing : request.getThings()){
+            try
+            {
+
+
+                Something something = new Something();
+                something.setValue1(thing.getValue1());
+                something.setValue2(thing.getValue2());
+//                something.setAnyParameter(anyParameter);
+
+                somethingDAO.save(something);
+
+                StatusContainer statusContainer = new StatusContainer();
+                statusContainer.setStatus(Status.SUCCESFULL);
+                response.getStatus().add(statusContainer);
+            }
+            catch (DataAccessException e)
+            {
+                StatusContainer statusContainer = new StatusContainer();
+                statusContainer.setStatus(Status.FAIL);
+                statusContainer.setError(e.getClass().getName());
+                response.getStatus().add(statusContainer);
+            }
         }
-        catch (DataAccessException e)
-        {
-            response.setError(e.getClass().getName());
-            response.setStatus(Status.FAIL);
-        }
+
+
 
         return response;
     }

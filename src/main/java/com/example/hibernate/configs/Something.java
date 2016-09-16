@@ -3,6 +3,7 @@ package com.example.hibernate.configs;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.math.BigInteger;
 
 @Entity
 @Table(name = "somethings")
@@ -16,10 +17,7 @@ public class Something
     private String value1;
 
     @NotNull
-    private Integer value2;
-
-    @ManyToOne
-    AnyParameter anyParameter;
+    private BigInteger value2;
 
     public Something()
     {
@@ -30,11 +28,10 @@ public class Something
         this.id = id;
     }
 
-    public Something(String value1, Integer value2, AnyParameter anyParameter)
+    public Something(String value1, BigInteger value2)
     {
         this.value1 = value1;
         this.value2 = value2;
-        this.anyParameter = anyParameter;
     }
 
     public long getId()
@@ -57,23 +54,13 @@ public class Something
         this.value1 = value1;
     }
 
-    public Integer getValue2()
+    public BigInteger getValue2()
     {
         return value2;
     }
 
-    public void setValue2(Integer value2)
+    public void setValue2(BigInteger value2)
     {
         this.value2 = value2;
-    }
-
-    public AnyParameter getAnyParameter()
-    {
-        return anyParameter;
-    }
-
-    public void setAnyParameter(AnyParameter anyParameter)
-    {
-        this.anyParameter = anyParameter;
     }
 }
