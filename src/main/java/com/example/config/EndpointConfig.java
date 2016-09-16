@@ -27,20 +27,28 @@ public class EndpointConfig
 
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "setEventRequest")
     @ResponsePayload
-    public SetEventResponse getCountry(@RequestPayload SetEventRequest request)
+    public SetEventResponse eventsProcessor(@RequestPayload SetEventRequest request)
     {
         SetEventResponse response = new SetEventResponse();
         response.setName(request.getName());
+        String eventName = request.getName();
+
+        try{
+            dbHelper.saveEvent(eventName);
+        } catch (DataAccessException e){
+            StatusContainer statusContainer = new StatusContainer();
+            statusContainer.setStatus(Status.FAIL);
+            statusContainer.setError(e.getClass().getName());
+            response.getStatus().add(statusContainer);
+            return response;
+        }
 
         for(Thing thing : request.getThings()){
             try
             {
-
-
                 Something something = new Something();
                 something.setValue1(thing.getValue1());
                 something.setValue2(thing.getValue2());
-//                something.setAnyParameter(anyParameter);
 
                 somethingDAO.save(something);
 
@@ -56,9 +64,6 @@ public class EndpointConfig
                 response.getStatus().add(statusContainer);
             }
         }
-
-
-
         return response;
     }
 }
